@@ -24,11 +24,11 @@ public class WineResource {
 		return dao.findAll();
 	}
 
-	@GET @Path("search/{querys}")
+	@GET @Path("search/{querys}/id/{id}")
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-	public List<Wine> findByName(@PathParam("querys") String query) {
+	public List<Wine> findByName(@PathParam("querys") String query, @PathParam("id") String id) {
 		System.out.println("findByName: " + query); 
-		return dao.findByName(query);
+		return dao.findByName(query,id);
 	}
 
 	@GET @Path("{id}")
