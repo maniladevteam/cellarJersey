@@ -23,7 +23,7 @@ public class WineResource {
 		System.out.println("findAll");
 		return dao.findAll();
 	}
-
+	
 	@GET @Path("search/{querys}")
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	public List<Wine> findByName(@PathParam("querys") String query) {
