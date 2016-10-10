@@ -34,16 +34,17 @@ public class WineDAO {
     }
 
     
-    public List<Wine> findByName(String name) {
+    public List<Wine> findByName(String name, String ID) {
         List<Wine> list = new ArrayList<Wine>();
         Connection c = null;
     	String sql = "SELECT * FROM wine as e " +
-			"WHERE UPPER(name) LIKE ? " +	
+			"WHERE UPPER(name) LIKE ? AND id = ? " +	
 			"ORDER BY name";
         try {
             c = ConnectionHelper.getConnection();
             PreparedStatement ps = c.prepareStatement(sql);
             ps.setString(1, "%" + name.toUpperCase() + "%");
+            ps.setString(2,ID);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 list.add(processRow(rs));
